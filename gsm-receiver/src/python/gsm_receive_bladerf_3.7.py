@@ -225,11 +225,11 @@ def get_options():
         help="set receiver sample rate (default 1800000)")
     parser.add_option("-f", "--frequency", type="eng_float", default=924.2e6,
         help="set receiver center frequency")
-    parser.add_option("-g", "--gain", type="eng_float", default=None,
+    parser.add_option("-g", "--gain", type="eng_float", default=10,
         help="set receiver gain")
 
     # demodulator related settings
-    parser.add_option("-o", "--output-file", type="string", default="cfile2.out", help="specify the output file")
+    parser.add_option("-o", "--output-file", type="string", default="bladerf.cfile", help="specify the output file")
     parser.add_option("-v", "--verbose", action="store_true", default=False, help="dump demodulation data")
     parser.add_option("-k", "--key", type="string", default="AD 6A 3E C2 B4 42 E4 00", help="KC session key")
     parser.add_option("-c", "--configuration", type="string", default="0B", help="Decoder configuration")
