@@ -14,7 +14,7 @@
 import sys
 import math
 from gnuradio import gr, gru, eng_notation, blocks
-from gnuradio.filter import optfir, firdes, freq_xlating_fir_filter_ccf, fractional_interpolator_cc
+from gnuradio.filter import optfir, firdes, freq_xlating_fir_filter_ccf, fractional_resampler_cc
 from gnuradio.eng_option import eng_option
 from gnuradio.wxgui import fftsink2
 from gnuradio.wxgui import forms
@@ -98,7 +98,7 @@ class top_block(grc_wxgui.top_block_gui):
     taps = firdes.low_pass(1.0, sample_rate, 145e3, 10e3, firdes.WIN_HANN)
     self.tuner = freq_xlating_fir_filter_ccf(1, taps, self.offset, sample_rate)
 
-    self.interpolator = fractional_interpolator_cc(0, sps)
+    self.interpolator = fractional_resampler_cc(0, sps)
 
     self.receiver = gsm.receiver_cf(
         self.tune_corrector_callback, self.synchronizer_callback, 4,
